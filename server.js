@@ -2,7 +2,7 @@ const express = require('express');
 const serveIndex = require('serve-index');
 const app = express();
 
-const www = './';
+const www = '../quizz/dist/quizz';
 app.use(express.static(www));
 app.use(serveIndex(www, { icons: true }));
 
