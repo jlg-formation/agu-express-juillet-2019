@@ -1,12 +1,18 @@
 const express = require('express');
 const serveIndex = require('serve-index');
 const cors = require('cors');
+const fs = require('fs');
 const app = express();
 
 app.use(cors());
 
+let list = {};
+try {
+  list = JSON.parse(fs.readFileSync('./quizz-list.json', 'utf-8'));
+} catch (e) {}
+
 app.get('/ws/quizz', (req, res) => {
-  res.json({ toto: 'titi' });
+  res.json(list);
 });
 
 const www = '../quizz/dist/quizz';
